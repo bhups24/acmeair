@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.acmeair.controller.BookingUpdateComponentTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-08-10T18:33:17" hostname="BCHAUDH-3R4J-9A" time="0.027">
-  <properties/>
-  <testcase name="updatePassengerDetails_Failure_BookingNotFound()" classname="com.acmeair.controller.BookingUpdateComponentTest" time="0.027"/>
-  <system-out><![CDATA[2025-08-11T04:33:17.124+10:00  INFO 31129 --- [acme-air-api] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.acmeair.controller.BookingUpdateComponentTest]: BookingUpdateComponentTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-08-11T04:33:17.126+10:00  INFO 31129 --- [acme-air-api] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.acmeair.AcmeAirApplication for test class com.acmeair.controller.BookingUpdateComponentTest
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
