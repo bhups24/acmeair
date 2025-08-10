@@ -1,371 +1,445 @@
 {
-  "info": {
-    "name": "AcmeAir Flight Booking API",
-    "description": "A flight booking system API for searching flights and managing bookings",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_postman_id": "acmeair-api-collection",
-    "version": {
-      "major": 1,
-      "minor": 0,
-      "patch": 0
-    }
-  },
-  "auth": {
-    "type": "apikey",
-    "apikey": [
-      {
-        "key": "key",
-        "value": "X-API-Key",
-        "type": "string"
-      },
-      {
-        "key": "value",
-        "value": "{{api_key}}",
-        "type": "string"
-      },
-      {
-        "key": "in",
-        "value": "header",
-        "type": "string"
-      }
-    ]
-  },
-  "variable": [
-    {
-      "key": "base_url",
-      "value": "http://localhost:8080",
-      "type": "string"
-    },
-    {
-      "key": "api_key",
-      "value": "acme-air-demo-2025-secure-token-12345",
-      "type": "string"
-    }
-  ],
-  "item": [
-    {
-      "name": "Flights",
-      "item": [
-        {
-          "name": "Search Flights - SYD to MEL",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/api/v1/flights/search?flightType=ONE_WAY&departureAirport=SYD&arrivalAirport=MEL&departureDate=2025-08-15&page=0&size=10&sortBy=departureTime&sortDirection=asc",
-              "host": ["{{base_url}}"],
-              "path": ["api", "v1", "flights", "search"],
-              "query": [
-                {
-                  "key": "flightType",
-                  "value": "ONE_WAY"
-                },
-                {
-                  "key": "departureAirport",
-                  "value": "SYD"
-                },
-                {
-                  "key": "arrivalAirport",
-                  "value": "MEL"
-                },
-                {
-                  "key": "departureDate",
-                  "value": "2025-08-15"
-                },
-                {
-                  "key": "page",
-                  "value": "0"
-                },
-                {
-                  "key": "size",
-                  "value": "10"
-                },
-                {
-                  "key": "sortBy",
-                  "value": "departureTime"
-                },
-                {
-                  "key": "sortDirection",
-                  "value": "asc"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Search Flights - MEL to PER Return",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/api/v1/flights/search?flightType=RETURN&departureAirport=MEL&arrivalAirport=PER&departureDate=2025-08-15&returnDate=2025-08-16&minPrice=400&maxPrice=1500&directFlightsOnly=true&page=0&size=10&sortBy=price&sortDirection=asc",
-              "host": ["{{base_url}}"],
-              "path": ["api", "v1", "flights", "search"],
-              "query": [
-                {
-                  "key": "flightType",
-                  "value": "RETURN"
-                },
-                {
-                  "key": "departureAirport",
-                  "value": "MEL"
-                },
-                {
-                  "key": "arrivalAirport",
-                  "value": "PER"
-                },
-                {
-                  "key": "departureDate",
-                  "value": "2025-08-15"
-                },
-                {
-                  "key": "returnDate",
-                  "value": "2025-08-16"
-                },
-                {
-                  "key": "minPrice",
-                  "value": "400"
-                },
-                {
-                  "key": "maxPrice",
-                  "value": "1500"
-                },
-                {
-                  "key": "directFlightsOnly",
-                  "value": "true"
-                },
-                {
-                  "key": "page",
-                  "value": "0"
-                },
-                {
-                  "key": "size",
-                  "value": "10"
-                },
-                {
-                  "key": "sortBy",
-                  "value": "price"
-                },
-                {
-                  "key": "sortDirection",
-                  "value": "asc"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Flight Details",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/api/v1/flights/FL001",
-              "host": ["{{base_url}}"],
-              "path": ["api", "v1", "flights", "FL001"]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Bookings",
-      "item": [
-        {
-          "name": "Create One-Way Booking",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"flightType\": \"ONE_WAY\",\n  \"flightId\": \"FL001\",\n  \"seatClass\": \"ECONOMY\",\n  \"passenger\": {\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@email.com\",\n    \"phoneNumber\": \"+61412345678\",\n    \"passportNumber\": \"A1234567\",\n    \"dateOfBirth\": \"1990-05-15\"\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}/api/v1/bookings",
-              "host": ["{{base_url}}"],
-              "path": ["api", "v1", "bookings"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create Return Booking",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"flightType\": \"RETURN\",\n  \"flightId\": \"FL015\",\n  \"returnFlightId\": \"FL027\",\n  \"seatClass\": \"BUSINESS\",\n  \"passenger\": {\n    \"firstName\": \"Jane\",\n    \"lastName\": \"Smith\",\n    \"email\": \"jane.smith@email.com\",\n    \"phoneNumber\": \"+61487654321\",\n    \"passportNumber\": \"B9876543\",\n    \"dateOfBirth\": \"1985-12-20\"\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}/api/v1/bookings",
-              "host": ["{{base_url}}"],
-              "path": ["api", "v1", "bookings"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get Booking Details",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/api/v1/bookings/BK12345ABC",
-              "host": ["{{base_url}}"],
-              "path": ["api", "v1", "bookings", "BK12345ABC"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update Passenger Details",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"email\": \"john.smith@newemail.com\",\n  \"phoneNumber\": \"+61400111222\",\n  \"passportNumber\": \"A1234567\",\n  \"dateOfBirth\": \"1990-05-15\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}/api/v1/bookings/BK12345ABC/passenger",
-              "host": ["{{base_url}}"],
-              "path": ["api", "v1", "bookings", "BK12345ABC", "passenger"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Cancel Booking",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/api/v1/bookings/BK12345ABC",
-              "host": ["{{base_url}}"],
-              "path": ["api", "v1", "bookings", "BK12345ABC"]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Error Examples",
-      "item": [
-        {
-          "name": "Invalid API Key",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-API-Key",
-                "value": "wrong-api-key",
-                "type": "text"
-              }
-            ],
-            "url": {
-              "raw": "{{base_url}}/api/v1/flights/FL001",
-              "host": ["{{base_url}}"],
-              "path": ["api", "v1", "flights", "FL001"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Missing Required Parameters",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{base_url}}/api/v1/flights/search?departureAirport=SYD",
-              "host": ["{{base_url}}"],
-              "path": ["api", "v1", "flights", "search"],
-              "query": [
-                {
-                  "key": "departureAirport",
-                  "value": "SYD"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Invalid Flight Type Validation",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"flightType\": \"RETURN\",\n  \"flightId\": \"FL001\",\n  \"seatClass\": \"ECONOMY\",\n  \"passenger\": {\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@email.com\",\n    \"phoneNumber\": \"+61412345678\",\n    \"passportNumber\": \"A1234567\",\n    \"dateOfBirth\": \"1990-05-15\"\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{base_url}}/api/v1/bookings",
-              "host": ["{{base_url}}"],
-              "path": ["api", "v1", "bookings"]
-            }
-          },
-          "response": []
-        }
-      ]
-    }
-  ],
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "exec": [
-          "// Set the demo API key",
-          "if (!pm.collectionVariables.get('api_key') || pm.collectionVariables.get('api_key') === 'your-api-key-here') {",
-          "    pm.collectionVariables.set('api_key', 'acme-air-demo-2025-secure-token-12345');",
-          "}"
-        ]
-      }
-    }
-  ]
+	"info": {
+		"_postman_id": "95bd89f1-2e5d-4bdb-849a-03ada5951844",
+		"name": "AcmeAir Flight Booking API",
+		"description": "A comprehensive flight booking system API for searching flights and managing bookings",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34125000"
+	},
+	"item": [
+		{
+			"name": "Flights",
+			"item": [
+				{
+					"name": "Search Flights - SYD to MEL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/flights/search?flightType=ONE_WAY&departureAirport=SYD&arrivalAirport=MEL&departureDate=2025-08-15&page=0&size=10&sortBy=departureTime&sortDirection=asc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flights",
+								"search"
+							],
+							"query": [
+								{
+									"key": "flightType",
+									"value": "ONE_WAY"
+								},
+								{
+									"key": "departureAirport",
+									"value": "SYD"
+								},
+								{
+									"key": "arrivalAirport",
+									"value": "MEL"
+								},
+								{
+									"key": "departureDate",
+									"value": "2025-08-15"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sortBy",
+									"value": "departureTime"
+								},
+								{
+									"key": "sortDirection",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Flights - MEL to PER Return",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/flights/search?flightType=RETURN&departureAirport=MEL&arrivalAirport=PER&departureDate=2025-08-15&returnDate=2025-08-16&minPrice=400&maxPrice=1500&directFlightsOnly=true&page=0&size=10&sortBy=price&sortDirection=asc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flights",
+								"search"
+							],
+							"query": [
+								{
+									"key": "flightType",
+									"value": "RETURN"
+								},
+								{
+									"key": "departureAirport",
+									"value": "MEL"
+								},
+								{
+									"key": "arrivalAirport",
+									"value": "PER"
+								},
+								{
+									"key": "departureDate",
+									"value": "2025-08-15"
+								},
+								{
+									"key": "returnDate",
+									"value": "2025-08-16"
+								},
+								{
+									"key": "minPrice",
+									"value": "400"
+								},
+								{
+									"key": "maxPrice",
+									"value": "1500"
+								},
+								{
+									"key": "directFlightsOnly",
+									"value": "true"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sortBy",
+									"value": "price"
+								},
+								{
+									"key": "sortDirection",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Flight Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/flights/FL001",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flights",
+								"FL001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "Create One-Way Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"flightType\": \"ONE_WAY\",\n  \"flightId\": \"FL001\",\n  \"seatClass\": \"ECONOMY\",\n  \"passenger\": {\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@email.com\",\n    \"phoneNumber\": \"+61412345678\",\n    \"passportNumber\": \"A1234567\",\n    \"dateOfBirth\": \"1990-05-15\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Return Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"flightType\": \"RETURN\",\n  \"flightId\": \"FL015\",\n  \"returnFlightId\": \"FL027\",\n  \"seatClass\": \"BUSINESS\",\n  \"passenger\": {\n    \"firstName\": \"Jane\",\n    \"lastName\": \"Smith\",\n    \"email\": \"jane.smith@email.com\",\n    \"phoneNumber\": \"+61487654321\",\n    \"passportNumber\": \"B9876543\",\n    \"dateOfBirth\": \"1985-12-20\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/BK12345ABC",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								"BK12345ABC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Passenger Details",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"email\": \"john.smith@newemail.com\",\n  \"phoneNumber\": \"+61400111222\",\n  \"passportNumber\": \"A1234567\",\n  \"dateOfBirth\": \"1990-05-15\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/BK12345ABC/passenger",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								"BK12345ABC",
+								"passenger"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Booking",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/BK12345ABC",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								"BK12345ABC"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Error Examples",
+			"item": [
+				{
+					"name": "Invalid API Key",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-API-Key",
+								"value": "wrong-api-key",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/flights/FL001",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flights",
+								"FL001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Missing Required Parameters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/flights/search?departureAirport=SYD",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"flights",
+								"search"
+							],
+							"query": [
+								{
+									"key": "departureAirport",
+									"value": "SYD"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Flight Type Validation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"flightType\": \"RETURN\",\n  \"flightId\": \"FL001\",\n  \"seatClass\": \"ECONOMY\",\n  \"passenger\": {\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@email.com\",\n    \"phoneNumber\": \"+61412345678\",\n    \"passportNumber\": \"A1234567\",\n    \"dateOfBirth\": \"1990-05-15\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "X-API-Key",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{api_key}}",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Set the demo API key",
+					"if (!pm.collectionVariables.get('api_key') || pm.collectionVariables.get('api_key') === 'your-api-key-here') {",
+					"    pm.collectionVariables.set('api_key', 'acme-air-demo-2025-secure-token-12345');",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "api_key",
+			"value": "acme-air-demo-2025-secure-token-12345",
+			"type": "string"
+		}
+	]
 }
