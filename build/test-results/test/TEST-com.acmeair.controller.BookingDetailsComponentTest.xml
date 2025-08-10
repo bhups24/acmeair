@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.acmeair.controller.BookingDetailsComponentTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-08-10T18:33:17" hostname="BCHAUDH-3R4J-9A" time="0.051">
+  <properties/>
+  <testcase name="getBookingDetails_Failure_BookingNotFound()" classname="com.acmeair.controller.BookingDetailsComponentTest" time="0.051"/>
+  <system-out><![CDATA[2025-08-11T04:33:15.516+10:00  INFO 31129 --- [acme-air-api] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.acmeair.controller.BookingDetailsComponentTest]: BookingDetailsComponentTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-08-11T04:33:15.522+10:00  INFO 31129 --- [acme-air-api] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.acmeair.AcmeAirApplication for test class com.acmeair.controller.BookingDetailsComponentTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-08-11T04:33:15.573+10:00  INFO 31129 --- [acme-air-api] [    Test worker] c.a.c.BookingDetailsComponentTest        : Starting BookingDetailsComponentTest using Java 21.0.8 with PID 31129 (started by bhupendra.chaudhary in /Users/bhupendra.chaudhary/dev/acmeair/acmeair)
+2025-08-11T04:33:15.574+10:00  INFO 31129 --- [acme-air-api] [    Test worker] c.a.c.BookingDetailsComponentTest        : No active profile set, falling back to 1 default profile: "default"
+2025-08-11T04:33:15.826+10:00  INFO 31129 --- [acme-air-api] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-11T04:33:15.849+10:00  INFO 31129 --- [acme-air-api] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 3 JPA repository interfaces.
+2025-08-11T04:33:15.946+10:00  INFO 31129 --- [acme-air-api] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2025-08-11T04:33:15.947+10:00  INFO 31129 --- [acme-air-api] [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-11T04:33:15.948+10:00  INFO 31129 --- [acme-air-api] [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-08-11T04:33:15.968+10:00  INFO 31129 --- [acme-air-api] [    Test worker] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-08-11T04:33:15.968+10:00  INFO 31129 --- [acme-air-api] [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 392 ms
+2025-08-11T04:33:16.001+10:00  INFO 31129 --- [acme-air-api] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-08-11T04:33:16.007+10:00  INFO 31129 --- [acme-air-api] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:testdb user=SA
+2025-08-11T04:33:16.007+10:00  INFO 31129 --- [acme-air-api] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-08-11T04:33:16.010+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.database                       : Set default schema name to PUBLIC
+2025-08-11T04:33:16.237+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Creating database history table with name: PUBLIC.DATABASECHANGELOG
+2025-08-11T04:33:16.246+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2025-08-11T04:33:16.294+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.lockservice                    : Successfully acquired change log lock
+2025-08-11T04:33:16.295+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.command                        : Using deploymentId: 4850796295
+2025-08-11T04:33:16.296+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+Running Changeset: db/changelog/001-create-tables.xml::001-create-enhanced-flights-table::acme-air
+2025-08-11T04:33:16.377+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Table flights created
+2025-08-11T04:33:16.380+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Index idx_origin_destination created
+2025-08-11T04:33:16.382+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Index idx_departure_time created
+2025-08-11T04:33:16.382+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Index idx_economy_price created
+2025-08-11T04:33:16.383+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Index idx_is_direct created
+2025-08-11T04:33:16.383+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/001-create-tables.xml::001-create-enhanced-flights-table::acme-air ran successfully in 15ms
+Running Changeset: db/changelog/001-create-tables.xml::002-create-passengers-table::acme-air
+2025-08-11T04:33:16.390+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Table passengers created
+2025-08-11T04:33:16.392+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Index idx_email created
+2025-08-11T04:33:16.393+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Index idx_passport_number created
+2025-08-11T04:33:16.394+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/001-create-tables.xml::002-create-passengers-table::acme-air ran successfully in 7ms
+Running Changeset: db/changelog/001-create-tables.xml::003-create-enhanced-bookings-table::acme-air
+2025-08-11T04:33:16.404+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Table bookings created
+2025-08-11T04:33:16.410+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Foreign key constraint added to bookings (flight_id)
+2025-08-11T04:33:16.414+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Foreign key constraint added to bookings (return_flight_id)
+2025-08-11T04:33:16.416+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Foreign key constraint added to bookings (passenger_id)
+2025-08-11T04:33:16.418+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Index idx_flight_id created
+2025-08-11T04:33:16.420+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Index idx_booking_time created
+2025-08-11T04:33:16.420+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Index idx_seat_class created
+2025-08-11T04:33:16.421+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Index idx_flight_type created
+2025-08-11T04:33:16.421+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/001-create-tables.xml::003-create-enhanced-bookings-table::acme-air ran successfully in 20ms
+Running Changeset: db/changelog/001-create-tables.xml::004-create-api-tokens-table::acme-air
+2025-08-11T04:33:16.429+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Table api_tokens created
+2025-08-11T04:33:16.430+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : Index idx_token_value created
+2025-08-11T04:33:16.430+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/001-create-tables.xml::004-create-api-tokens-table::acme-air ran successfully in 4ms
+Running Changeset: db/changelog/002-insert-sample-data.xml::001-insert-demo-api-token::acme-air
+2025-08-11T04:33:16.436+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into api_tokens
+2025-08-11T04:33:16.437+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/002-insert-sample-data.xml::001-insert-demo-api-token::acme-air ran successfully in 3ms
+Running Changeset: db/changelog/002-insert-sample-data.xml::002-insert-enhanced-sample-flights::acme-air
+2025-08-11T04:33:16.472+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.473+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.476+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.478+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.480+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.481+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.483+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.484+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.511+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.513+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.514+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.515+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.517+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.519+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.520+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.521+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.523+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.527+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.530+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.530+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.531+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.532+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.533+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.534+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.535+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.542+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.544+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.545+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : New row inserted into flights
+2025-08-11T04:33:16.548+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.changelog                      : ChangeSet db/changelog/002-insert-sample-data.xml::002-insert-enhanced-sample-flights::acme-air ran successfully in 80ms
+2025-08-11T04:33:16.553+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.util                           : UPDATE SUMMARY
+2025-08-11T04:33:16.553+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.util                           : Run:                          6
+2025-08-11T04:33:16.553+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.util                           : Previously run:               0
+2025-08-11T04:33:16.553+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.util                           : Filtered out:                 0
+2025-08-11T04:33:16.553+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.util                           : -------------------------------
+2025-08-11T04:33:16.553+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.util                           : Total change sets:            6
+2025-08-11T04:33:16.553+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.util                           : Update summary generated
+2025-08-11T04:33:16.553+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.command                        : Update command completed successfully.
+Liquibase: Update has been successful. Rows affected: 35
+2025-08-11T04:33:16.555+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.lockservice                    : Successfully released change log lock
+2025-08-11T04:33:16.556+10:00  INFO 31129 --- [acme-air-api] [    Test worker] liquibase.command                        : Command execution complete
+2025-08-11T04:33:16.585+10:00  INFO 31129 --- [acme-air-api] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-11T04:33:16.589+10:00  INFO 31129 --- [acme-air-api] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-11T04:33:16.594+10:00  INFO 31129 --- [acme-air-api] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-11T04:33:16.596+10:00  WARN 31129 --- [acme-air-api] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-11T04:33:16.726+10:00  INFO 31129 --- [acme-air-api] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-11T04:33:16.767+10:00  INFO 31129 --- [acme-air-api] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-11T04:33:16.905+10:00  WARN 31129 --- [acme-air-api] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-11T04:33:16.911+10:00  WARN 31129 --- [acme-air-api] [    Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 7b49297f-5295-4360-bea5-87cb120733fa
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-08-11T04:33:16.977+10:00  INFO 31129 --- [acme-air-api] [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@546167af, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4e88c6b7, org.springframework.security.web.context.SecurityContextHolderFilter@423febc6, org.springframework.security.web.header.HeaderWriterFilter@10e1d65b, org.springframework.web.filter.CorsFilter@6d4ed02d, org.springframework.security.web.authentication.logout.LogoutFilter@612d53b7, com.acmeair.security.ApiKeyAuthenticationFilter@1e99329b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@300f340b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2e426f5f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@419a62f8, org.springframework.security.web.session.SessionManagementFilter@20e19ea, org.springframework.security.web.access.ExceptionTranslationFilter@212a6d1f, org.springframework.security.web.access.intercept.AuthorizationFilter@7e7b44]
+2025-08-11T04:33:17.057+10:00  INFO 31129 --- [acme-air-api] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 53918 (http) with context path ''
+2025-08-11T04:33:17.060+10:00  INFO 31129 --- [acme-air-api] [    Test worker] c.a.c.BookingDetailsComponentTest        : Started BookingDetailsComponentTest in 1.522 seconds (process running for 17.23)
+2025-08-11T04:33:17.080+10:00  INFO 31129 --- [acme-air-api] [o-auto-3-exec-1] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-11T04:33:17.081+10:00  INFO 31129 --- [acme-air-api] [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-08-11T04:33:17.082+10:00  INFO 31129 --- [acme-air-api] [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-08-11T04:33:17.083+10:00  WARN 31129 --- [acme-air-api] [o-auto-3-exec-1] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/v1/bookings/INVALID_BOOKING_ID' (previous null). Performing CorsConfiguration lookup. This is logged once only at WARN level, and every time at TRACE.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

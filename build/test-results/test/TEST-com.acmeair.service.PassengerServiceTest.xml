@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.acmeair.service.PassengerServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-08-10T18:33:18" hostname="BCHAUDH-3R4J-9A" time="0.008">
+  <properties/>
+  <testcase name="createPassenger_Success_GeneratesIdAndCopiesData()" classname="com.acmeair.service.PassengerServiceTest" time="0.005"/>
+  <testcase name="createPassenger_Success_PreservesAllPassengerData()" classname="com.acmeair.service.PassengerServiceTest" time="0.001"/>
+  <testcase name="createPassenger_Success_GeneratesUniqueIds()" classname="com.acmeair.service.PassengerServiceTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

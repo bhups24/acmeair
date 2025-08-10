@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.acmeair.service.ApiTokenServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-08-10T18:33:17" hostname="BCHAUDH-3R4J-9A" time="0.286">
+  <properties/>
+  <testcase name="createToken_Success_GeneratesProperTokenId()" classname="com.acmeair.service.ApiTokenServiceTest" time="0.268"/>
+  <testcase name="isValidToken_Failure_ReturnsFalseForNullToken()" classname="com.acmeair.service.ApiTokenServiceTest" time="0.004"/>
+  <testcase name="isValidToken_Failure_ReturnsFalseForInvalidToken()" classname="com.acmeair.service.ApiTokenServiceTest" time="0.003"/>
+  <testcase name="createToken_Success_CreatesAndSavesNewToken()" classname="com.acmeair.service.ApiTokenServiceTest" time="0.004"/>
+  <testcase name="isValidToken_Success_ReturnsTrueForValidActiveToken()" classname="com.acmeair.service.ApiTokenServiceTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

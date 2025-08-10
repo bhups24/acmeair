@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.acmeair.controller.FlightDetailsComponentTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-08-10T18:33:17" hostname="BCHAUDH-3R4J-9A" time="0.081">
+  <properties/>
+  <testcase name="getFlightDetails_Failure_FlightNotFound()" classname="com.acmeair.controller.FlightDetailsComponentTest" time="0.047"/>
+  <testcase name="getFlightDetails_Success_ReturnsFlightDetails()" classname="com.acmeair.controller.FlightDetailsComponentTest" time="0.033"/>
+  <system-out><![CDATA[2025-08-11T04:33:17.162+10:00  INFO 31129 --- [acme-air-api] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.acmeair.controller.FlightDetailsComponentTest]: FlightDetailsComponentTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-08-11T04:33:17.163+10:00  INFO 31129 --- [acme-air-api] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.acmeair.AcmeAirApplication for test class com.acmeair.controller.FlightDetailsComponentTest
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,448 @@
+openapi: 3.0.3
+info:
+  title: AcmeAir Flight Booking API
+  description: A flight booking system API for searching flights and managing bookings
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /api/v1/flights/search:
+    get:
+      tags:
+        - Flights
+      summary: Search for flights
+      parameters:
+        - name: flightType
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [ONE_WAY, RETURN]
+        - name: departureAirport
+          in: query
+          required: true
+          schema:
+            type: string
+            example: "SYD"
+        - name: arrivalAirport
+          in: query
+          required: true
+          schema:
+            type: string
+            example: "MEL"
+        - name: departureDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+            example: "2025-08-15"
+        - name: returnDate
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+            example: "2025-08-16"
+        - name: minPrice
+          in: query
+          required: false
+          schema:
+            type: number
+            example: 200.00
+        - name: maxPrice
+          in: query
+          required: false
+          schema:
+            type: number
+            example: 600.00
+        - name: directFlightsOnly
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 10
+        - name: sortBy
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [departureTime, price, origin, destination]
+            default: "departureTime"
+        - name: sortDirection
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [asc, desc]
+            default: "asc"
+      responses:
+        '200':
+          description: Flight search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlightSearchResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/flights/{flightId}:
+    get:
+      tags:
+        - Flights
+      summary: Get flight details
+      parameters:
+        - name: flightId
+          in: path
+          required: true
+          schema:
+            type: string
+            example: "FL001"
+      responses:
+        '200':
+          description: Flight details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlightResponseDto'
+        '404':
+          description: Flight not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/bookings:
+    post:
+      tags:
+        - Bookings
+      summary: Create a new booking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingRequest'
+      responses:
+        '201':
+          description: Booking created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/bookings/{bookingId}:
+    get:
+      tags:
+        - Bookings
+      summary: Get booking details
+      parameters:
+        - name: bookingId
+          in: path
+          required: true
+          schema:
+            type: string
+            example: "BK12345ABC"
+      responses:
+        '200':
+          description: Booking details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+        '404':
+          description: Booking not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+        - Bookings
+      summary: Cancel a booking
+      parameters:
+        - name: bookingId
+          in: path
+          required: true
+          schema:
+            type: string
+            example: "BK12345ABC"
+      responses:
+        '200':
+          description: Booking cancelled
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  bookingId:
+                    type: string
+                  flightType:
+                    type: string
+                  seatClass:
+                    type: string
+                  refundAmount:
+                    type: number
+
+  /api/v1/bookings/{bookingId}/passenger:
+    put:
+      tags:
+        - Bookings
+      summary: Update passenger details
+      parameters:
+        - name: bookingId
+          in: path
+          required: true
+          schema:
+            type: string
+            example: "BK12345ABC"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Passenger'
+      responses:
+        '200':
+          description: Passenger updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+
+  schemas:
+    FlightSearchResponse:
+      type: object
+      properties:
+        flightType:
+          type: string
+          enum: [ONE_WAY, RETURN]
+        outboundFlights:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlightResponseDto'
+        returnFlights:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlightResponseDto'
+        totalResults:
+          type: integer
+        currentPage:
+          type: integer
+        pageSize:
+          type: integer
+        totalPages:
+          type: integer
+        isFirst:
+          type: boolean
+        isLast:
+          type: boolean
+
+    FlightResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "FL001"
+        flightNumber:
+          type: string
+          example: "AC101"
+        origin:
+          type: string
+          example: "SYD"
+        destination:
+          type: string
+          example: "MEL"
+        departureTime:
+          type: string
+          format: date-time
+          example: "2025-08-15T06:00:00"
+        arrivalTime:
+          type: string
+          format: date-time
+          example: "2025-08-15T07:30:00"
+        aircraft:
+          type: string
+          example: "Boeing 737"
+        seats:
+          $ref: '#/components/schemas/SeatClasses'
+        stops:
+          type: integer
+          example: 0
+        direct:
+          type: boolean
+          example: true
+        totalSeats:
+          type: integer
+          example: 164
+        totalAvailableSeats:
+          type: integer
+          example: 147
+
+    SeatClasses:
+      type: object
+      properties:
+        economy:
+          $ref: '#/components/schemas/SeatInfo'
+        premiumEconomy:
+          $ref: '#/components/schemas/SeatInfo'
+        business:
+          $ref: '#/components/schemas/SeatInfo'
+        firstClass:
+          $ref: '#/components/schemas/SeatInfo'
+
+    SeatInfo:
+      type: object
+      properties:
+        price:
+          type: number
+          example: 199.99
+        availableSeats:
+          type: integer
+          example: 120
+        totalSeats:
+          type: integer
+          example: 120
+
+    BookingRequest:
+      type: object
+      required:
+        - flightType
+        - flightId
+        - seatClass
+        - passenger
+      properties:
+        flightType:
+          type: string
+          enum: [ONE_WAY, RETURN]
+        flightId:
+          type: string
+          example: "FL001"
+        returnFlightId:
+          type: string
+          example: "FL025"
+        seatClass:
+          type: string
+          enum: [ECONOMY, PREMIUM_ECONOMY, BUSINESS, FIRST_CLASS]
+        passenger:
+          $ref: '#/components/schemas/Passenger'
+
+    Passenger:
+      type: object
+      required:
+        - firstName
+        - lastName
+        - email
+        - phoneNumber
+        - passportNumber
+        - dateOfBirth
+      properties:
+        id:
+          type: string
+          example: "P12345ABC"
+        firstName:
+          type: string
+          example: "John"
+        lastName:
+          type: string
+          example: "Doe"
+        email:
+          type: string
+          format: email
+          example: "john.doe@email.com"
+        phoneNumber:
+          type: string
+          example: "+61412345678"
+        passportNumber:
+          type: string
+          example: "A1234567"
+        dateOfBirth:
+          type: string
+          format: date
+          example: "1990-05-15"
+
+    Booking:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "BK12345ABC"
+        flightId:
+          type: string
+          example: "FL001"
+        returnFlightId:
+          type: string
+          example: "FL025"
+        passenger:
+          $ref: '#/components/schemas/Passenger'
+        bookingTime:
+          type: string
+          format: date-time
+          example: "2025-08-11T10:30:00"
+        status:
+          type: string
+          enum: [CONFIRMED, CANCELLED, PENDING]
+        seatClass:
+          type: string
+          enum: [ECONOMY, PREMIUM_ECONOMY, BUSINESS, FIRST_CLASS]
+        flightType:
+          type: string
+          enum: [ONE_WAY, RETURN]
+        seatNumber:
+          type: string
+          example: "12A"
+        returnSeatNumber:
+          type: string
+          example: "15C"
+        totalPrice:
+          type: number
+          example: 199.99
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Validation failed"
+        message:
+          type: string
+          example: "Flight type is required"
+        timestamp:
+          type: string
+          example: "2025-08-11T10:30:00.000Z (UTC)"
